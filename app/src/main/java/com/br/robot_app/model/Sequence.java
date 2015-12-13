@@ -46,6 +46,7 @@ public class Sequence {
         try {
             sequenceFile.createNewFile();
         } catch (IOException e) {
+            Log.d("saveFile","...");
             e.printStackTrace();
         }
         Log.d("Path:", String.valueOf(context.getFilesDir()));
@@ -73,6 +74,9 @@ public class Sequence {
     public void buildJSON(Context context){
         generate();
         FileOutputStream out;
+
+        // TODO: this is a workaround, the params need to be on JSON file with quotation
+        String[] params = {"duration","power","orietation","degree","instructions","loops","minimumDistance"};
         try {
             out = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             // TODO: the var with flag fixJSONBuild should be removed and add a improvement way to fix JSONbuild
@@ -81,9 +85,12 @@ public class Sequence {
             for(Block block : blocks) {
                 String instruction = block.getInstructions().toString();
                 instruction = instruction.substring(1); // fixJSONBuild
-                instruction = instruction.substring(0,instruction.length()-1); // fixJSONBuild
+                instruction = instruction.substring(0, instruction.length() - 1); // fixJSONBuild
                 instruction = instruction.replace("\"{","{");
                 instruction = instruction.replace("}\"","}");
+                for(String p : params){
+                    instruction = instruction.replace(p,"\"" + p + "\"");
+                }
                 count++;
                 if(blocks.size() != count){
                     instruction = instruction + ",";
@@ -95,6 +102,7 @@ public class Sequence {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            Log.d("buildJSON","...");
             e.printStackTrace();
         }
     }
@@ -128,6 +136,7 @@ public class Sequence {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            Log.d("showJSONfile","...");
             e.printStackTrace();
         }
     }
