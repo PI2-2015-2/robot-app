@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="150dp">
+    android:paddingTop="150dp"
+    android:background="@drawable/bg80">
+
+    <ImageView
+        android:layout_width="169dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageView"
+        android:background="@drawable/new_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="169dp"
+        android:layout_height="117dp"
+        android:id="@+id/carIcon"
+        android:background="@drawable/carro"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
 
     <ImageView
         android:id="@+id/status_img"
         android:layout_gravity="center"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@mipmap/conn_status_on" />
+        android:src="@mipmap/conn_status_on"
+        android:layout_above="@+id/status_bnt"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -19,6 +39,25 @@
         android:text="Status"
         android:id="@+id/status_bnt"
         android:layout_gravity="center"
-        android:onClick="showStatus"/>
+        android:onClick="showStatus"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Licenciado pela"
+        android:id="@+id/textView1"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/carIcon"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GNU General Public License (GPL) Versão2"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
