@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Blocks hold all the instruction in JSON objects as strings
@@ -35,6 +36,9 @@ public class Block{
      * Adding a new instruction on the block
      */
     public void generateInstruction() {
+        this.instructions = new JSONObject();
+
+        function = function + generateRandNum();
         int numParam = params.size();
         LinkedHashMap hashParam = new LinkedHashMap();
         for (int i = 0; i < numParam; i++)
@@ -56,6 +60,10 @@ public class Block{
         this.function = function;
         this.params = params;
         this.values = values;
-        generateInstruction();
+    }
+
+    private int generateRandNum(){
+        Random rand = new Random();
+        return rand.nextInt(1000);
     }
 }

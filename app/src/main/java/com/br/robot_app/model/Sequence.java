@@ -71,6 +71,7 @@ public class Sequence {
      * @param context app context
      */
     public void buildJSON(Context context){
+        generate();
         FileOutputStream out;
         try {
             out = context.openFileOutput(fileName, Context.MODE_PRIVATE);
@@ -81,6 +82,8 @@ public class Sequence {
                 String instruction = block.getInstructions().toString();
                 instruction = instruction.substring(1); // fixJSONBuild
                 instruction = instruction.substring(0,instruction.length()-1); // fixJSONBuild
+                instruction = instruction.replace("\"{","{");
+                instruction = instruction.replace("}\"","}");
                 count++;
                 if(blocks.size() != count){
                     instruction = instruction + ",";
@@ -93,6 +96,12 @@ public class Sequence {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void generate(){
+        for(Block block : blocks){
+            block.generateInstruction();
         }
     }
 
