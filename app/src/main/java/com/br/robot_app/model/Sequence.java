@@ -76,7 +76,7 @@ public class Sequence {
         FileOutputStream out;
 
         // TODO: this is a workaround, the params need to be on JSON file with quotation
-        String[] params = {"duration","power","orietation","degree","instructions","loops","minimumDistance"};
+        String[] params = {"duration","power","orientation","instructions","loops","minimumDistance"};
         try {
             out = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             // TODO: the var with flag fixJSONBuild should be removed and add a improvement way to fix JSONbuild
