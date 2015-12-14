@@ -74,7 +74,7 @@ public class ApiBlock {
 
         mfParams.add("duration");
         mfParams.add("power");
-        mfParams.add("orietation");
+        mfParams.add("orientation");
 
         mfValues.add("2");
         mfValues.add("100");
@@ -86,7 +86,7 @@ public class ApiBlock {
 
         mbParams.add("duration");
         mbParams.add("power");
-        mbParams.add("orietation");
+        mbParams.add("orientation");
 
         mbValues.add("2");
         mbValues.add("100");
@@ -96,11 +96,9 @@ public class ApiBlock {
         List<String> trValues = new ArrayList<String>();
         List<String> trParams = new ArrayList<String>();
 
-        trParams.add("degree");
+        trParams.add("orientation");
         trParams.add("power");
-        trParams.add("orietation");
 
-        trValues.add("90");
         trValues.add("100");
         trValues.add("1");
 
@@ -108,11 +106,9 @@ public class ApiBlock {
         List<String> tlValues = new ArrayList<String>();
         List<String> tlParams = new ArrayList<String>();
 
-        tlParams.add("degree");
+        tlParams.add("orientation");
         tlParams.add("power");
-        tlParams.add("orietation");
 
-        tlValues.add("90");
         tlValues.add("100");
         tlValues.add("0");
 
@@ -153,10 +149,10 @@ public class ApiBlock {
         loopValues.add("3");
 
         // Setting instruction to the blocks
-        moveForwardBlock.setInstruction("moveForward", mfParams, mfValues);
-        moveBackwardBlock.setInstruction("moveBackward", mbParams, mbValues);
-        moveRightBlock.setInstruction("turnRight", trParams, trValues);
-        moveLeftBlock.setInstruction("turnLeft", tlParams, tlValues);
+        moveForwardBlock.setInstruction("move", mfParams, mfValues);
+        moveBackwardBlock.setInstruction("move", mbParams, mbValues);
+        moveRightBlock.setInstruction("turn", trParams, trValues);
+        moveLeftBlock.setInstruction("turn", tlParams, tlValues);
 
         stopBlock.setInstruction("stop", stopParams, stopValues);
         spinBlock.setInstruction("spin", spinParams, spinValues);
