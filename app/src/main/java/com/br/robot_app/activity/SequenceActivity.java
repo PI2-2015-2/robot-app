@@ -27,6 +27,7 @@ import com.br.robot_app.model.Block;
 import com.br.robot_app.model.Sequence;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -78,7 +79,13 @@ public class SequenceActivity extends AppCompatActivity {
         Bundle inst = getIntent().getExtras();
         if(inst != null){
             String instructions =  inst.getString("instructions");
-            Log.d("Get Instruction:", instructions);
+
+            try {
+                JSONObject parser = new JSONObject(instructions);
+                parserSequence(parser);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -123,8 +130,8 @@ public class SequenceActivity extends AppCompatActivity {
         conn.sender(newSequence.getSequence());
     }
 
-    private void parserSequence(){
-
+    private void parserSequence(JSONObject sequence){
+        Log.d("Parser", String.valueOf(sequence.));
     }
 
     /** Start of inerclasses TODO: This should be a package of class contains Listeners **/
@@ -169,7 +176,7 @@ public class SequenceActivity extends AppCompatActivity {
 
                 viewBlock.setImageResource(viewResource);
                 new_line.addView(viewBlock);
-                viewBlock.setOnTouchListener(new RemoveBlockListener(viewResource));
+                viewBlock.setOnTouchListener(new RemoveBlockListener());
 
                 listOfBlocks.add(String.valueOf(viewBlock.getId()));
 
@@ -190,11 +197,7 @@ public class SequenceActivity extends AppCompatActivity {
      */
     private class RemoveBlockListener implements OnTouchListener {
 
-        private int viewResource;
-
-        public RemoveBlockListener(int viewResource) {
-            this.viewResource = viewResource;
-        }
+        public RemoveBlockListener() { }
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
