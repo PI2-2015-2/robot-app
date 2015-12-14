@@ -105,8 +105,8 @@ public class ApiBlock {
         List<String> trValues = new ArrayList<String>();
         List<String> trParams = new ArrayList<String>();
 
-        trParams.add("orientation");
         trParams.add("power");
+        trParams.add("orientation");
 
         trValues.add("100");
         trValues.add("1");
@@ -115,8 +115,8 @@ public class ApiBlock {
         List<String> tlValues = new ArrayList<String>();
         List<String> tlParams = new ArrayList<String>();
 
-        tlParams.add("orientation");
         tlParams.add("power");
+        tlParams.add("orientation");
 
         tlValues.add("100");
         tlValues.add("0");
