@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Blocks hold all the instruction in JSON objects as strings
@@ -15,26 +16,17 @@ public class Block{
     public String function;
     public List<String> params;
     public List<String> values;
-
-    private JSONObject instructions;
+    public JSONObject instructions;
 
     public Block(){
         this.instructions = new JSONObject();
     }
 
     /**
-     * Access method to get the current instructions
-     *
-     * @return instructions of the block
-     */
-    public JSONObject getInstructions(){
-        return this.instructions;
-    }
-
-    /**
      * Adding a new instruction on the block
      */
     public void generateInstruction() {
+        this.instructions = new JSONObject();
         int numParam = params.size();
         LinkedHashMap hashParam = new LinkedHashMap();
         for (int i = 0; i < numParam; i++)
@@ -56,6 +48,5 @@ public class Block{
         this.function = function;
         this.params = params;
         this.values = values;
-        generateInstruction();
     }
 }

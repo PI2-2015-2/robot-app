@@ -92,21 +92,19 @@ public class Connector {
     private class ClientThread implements Runnable{
         @Override
         public void run() {
-            while(true){
-                try{
-                    InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
-                    mainSocket = new Socket(serverAddr, SERVERPORT);
-                } catch (UnknownHostException e) {
-                    Log.d("Unknown Host: ", e.getMessage());
-                    retryIn();
-                } catch (ConnectException e) {
-                    Log.d("ConnectException: ", e.getMessage());
-                    closeSocket();
-                    retryIn();
-                } catch (IOException e) {
-                    Log.d("IOException: ", e.getMessage());
-                    retryIn();
-                }
+            try{
+                InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
+                mainSocket = new Socket(serverAddr, SERVERPORT);
+            } catch (UnknownHostException e) {
+                Log.d("Unknown Host: ", e.getMessage());
+                retryIn();
+            } catch (ConnectException e) {
+                Log.d("ConnectException: ", e.getMessage());
+                closeSocket();
+                retryIn();
+            } catch (IOException e) {
+                Log.d("IOException: ", e.getMessage());
+                retryIn();
             }
         }
 
