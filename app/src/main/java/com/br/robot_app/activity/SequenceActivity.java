@@ -71,6 +71,15 @@ public class SequenceActivity extends AppCompatActivity {
         newSequence = new Sequence(getBaseContext());
         api = new ApiBlock();
         setElements();
+        setSequence();
+    }
+
+    private void setSequence(){
+        Bundle inst = getIntent().getExtras();
+        if(inst != null){
+            String instructions =  inst.getString("instructions");
+            Log.d("Get Instruction:", instructions);
+        }
     }
 
     /**
@@ -112,6 +121,10 @@ public class SequenceActivity extends AppCompatActivity {
         }
 
         conn.sender(newSequence.getSequence());
+    }
+
+    private void parserSequence(){
+
     }
 
     /** Start of inerclasses TODO: This should be a package of class contains Listeners **/

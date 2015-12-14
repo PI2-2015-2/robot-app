@@ -42,15 +42,15 @@ public class Sequence {
      */
     public void saveFile(Context context, String progName){
         progName = progName + ".json";
-        sequenceFile = new File(context.getFilesDir(), progName);
+        fileName = progName;
+        sequenceFile = new File(context.getFilesDir(), fileName);
+        buildJSON(context);
         try {
             sequenceFile.createNewFile();
         } catch (IOException e) {
             Log.d("saveFile","...");
             e.printStackTrace();
         }
-        Log.d("Path:", String.valueOf(context.getFilesDir()));
-        Log.d("File:", fileName);
     }
 
     // TODO: this is just to debug. Remove this later
