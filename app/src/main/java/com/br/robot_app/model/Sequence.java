@@ -88,6 +88,7 @@ public class Sequence {
                 instruction = instruction.substring(0, instruction.length() - 1); // fixJSONBuild
                 instruction = instruction.replace("\"{","{");
                 instruction = instruction.replace("}\"","}");
+                instruction = instruction.replace("=",":");
                 for(String p : params){
                     instruction = instruction.replace(p,"\"" + p + "\"");
                 }

@@ -217,7 +217,7 @@ public class SequenceActivity extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             boolean actionResult = false;
             if(event.getAction() == MotionEvent.ACTION_DOWN){
-                //sendSequenceFile(v.getContext());
+                sendSequenceFile(v.getContext());
                 newSequence.showJSONfile(getBaseContext());
                 Log.d("Size blocks: ", String.valueOf(newSequence.blocks.size()));
                 actionResult = true;
