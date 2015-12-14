@@ -1,5 +1,6 @@
 package com.br.robot_app.model;
 
+import android.util.Log;
 import android.view.View;
 
 import com.br.robot_app.R;
@@ -50,7 +51,15 @@ public class ApiBlock {
      */
     public Block getBlockById(int blockId) {
         Block result = blockTypes.get(blockId);
-        return result;
+        Block newBlock = new Block();
+
+        newBlock.blockId = result.blockId;
+        newBlock.function = result.function;
+        newBlock.params = result.params;
+        newBlock.values = result.values;
+        newBlock.instructions = result.instructions;
+
+        return newBlock;
     }
 
     /**
@@ -78,7 +87,7 @@ public class ApiBlock {
 
         mfValues.add("2");
         mfValues.add("100");
-        mfValues.add("0");
+        mfValues.add("1");
 
         // Move Backward
         List<String> mbValues = new ArrayList<String>();
@@ -90,7 +99,7 @@ public class ApiBlock {
 
         mbValues.add("2");
         mbValues.add("100");
-        mbValues.add("1");
+        mbValues.add("0");
 
         // Turn Right
         List<String> trValues = new ArrayList<String>();
@@ -118,16 +127,14 @@ public class ApiBlock {
 
         stopParams.add("duration");
 
-        stopValues.add("0");
+        stopValues.add("2");
 
         // Spin
         List<String> spinValues = new ArrayList<String>();
         List<String> spinParams = new ArrayList<String>();
 
-        spinParams.add("degree");
         spinParams.add("power");
 
-        spinValues.add("360");
         spinValues.add("100");
 
         // Condition
@@ -145,8 +152,8 @@ public class ApiBlock {
         loopParams.add("instructions");
         loopParams.add("loops");
 
-        loopValues.add("3");
-        loopValues.add("3");
+        loopValues.add("2");
+        loopValues.add("2");
 
         // Setting instruction to the blocks
         moveForwardBlock.setInstruction("move", mfParams, mfValues);

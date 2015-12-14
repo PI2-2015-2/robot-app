@@ -35,6 +35,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Responsable for creating a sequence_screen of blocks and mount the
@@ -150,6 +151,7 @@ public class SequenceActivity extends AppCompatActivity {
                 ImageView viewBlock = new ImageView(getApplication());
                 viewBlock.setId(interator);
                 blockResource.blockId = interator;
+                blockResource.function += interator;
                 interator++;
 
                 viewBlock.setImageResource(viewResource);

@@ -83,7 +83,7 @@ public class Sequence {
             out.write("{".getBytes()); // fixJSONBuild
             int count = 0;
             for(Block block : blocks) {
-                String instruction = block.getInstructions().toString();
+                String instruction = block.instructions.toString();
                 instruction = instruction.substring(1); // fixJSONBuild
                 instruction = instruction.substring(0, instruction.length() - 1); // fixJSONBuild
                 instruction = instruction.replace("\"{","{");

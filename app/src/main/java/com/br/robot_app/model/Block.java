@@ -16,20 +16,10 @@ public class Block{
     public String function;
     public List<String> params;
     public List<String> values;
-
-    private JSONObject instructions;
+    public JSONObject instructions;
 
     public Block(){
         this.instructions = new JSONObject();
-    }
-
-    /**
-     * Access method to get the current instructions
-     *
-     * @return instructions of the block
-     */
-    public JSONObject getInstructions(){
-        return this.instructions;
     }
 
     /**
@@ -37,8 +27,6 @@ public class Block{
      */
     public void generateInstruction() {
         this.instructions = new JSONObject();
-
-        function = function + generateRandNum();
         int numParam = params.size();
         LinkedHashMap hashParam = new LinkedHashMap();
         for (int i = 0; i < numParam; i++)
@@ -60,10 +48,5 @@ public class Block{
         this.function = function;
         this.params = params;
         this.values = values;
-    }
-
-    private int generateRandNum(){
-        Random rand = new Random();
-        return rand.nextInt(1000);
     }
 }
